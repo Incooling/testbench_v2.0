@@ -64,6 +64,17 @@ def log_data(i, temp_data, pressure_data, fan_data, valve_data, flowmeter_data, 
     sheet1.write(i, temp_load_3_colm, temp_data['t_load_out'])
     sheet1.write(i, set_heat_load_colm, hvac_data['hvac_set'])
     sheet1.write(i, flowmeter_setting_colm, 1) # flowmeter_data['setting']
+    sheet1.write(i, welco_time_colm, welco_data['time'])
+    sheet1.write(i, welco_cst_colm, welco_data['cst'])
+    sheet1.write(i, welco_imc_colm, welco_data['imc'])
+    sheet1.write(i, welco_speed_colm, welco_data['speed'])
+    sheet1.write(i, welco_curr_colm, welco_data['curr'])
+    sheet1.write(i, welco_pin_colm, welco_data['pin'])
+    sheet1.write(i, welco_st_colm, welco_data['st'])
+    sheet1.write(i, welco_stat_colm, welco_data['stat'])
+    sheet1.write(i, welco_error_colm, welco_data['error'])
+
+
 
     wb1.save(f'{file[0]}.xls')
 

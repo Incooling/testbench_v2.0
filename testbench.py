@@ -34,7 +34,7 @@ def set_bench():
             # HVAC
             print("Enabling HVAC")
             hvac_set_var.insert(0, hvac.setHVAC(2.01))
-            comp_set_var.insert(0, compressor.setCompressor(2.5))
+            comp_set_var.insert(0, compressor.setCompressor(3))
 
             # compressor
             print("Enabling compressor")

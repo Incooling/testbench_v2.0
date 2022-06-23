@@ -4,6 +4,7 @@ import pyvisa
 from setup import *
 import re
 import serial
+
 # Setup connection
 rm = pyvisa.ResourceManager()
 QPX1200SP_1 = rm.open_resource(QPX1200SP_1)
@@ -30,26 +31,28 @@ scope.encoding = 'latin_1'
 scope.read_termination = '\n'
 scope.write_termination = None
 
-scope.write("MEASUREMENT:MEAS1:STATE ON")
-scope.write('MEASUREMENT:MEAS1:SOURCE1')
-scope.write("MEASUREMENT:MEAS1:TYPE FREQUENCY")
 
-scope.write("MEASUREMENT:MEAS2:STATE ON")
-scope.write('MEASUREMENT:MEAS2:SOURCE1')
-scope.write("MEASUREMENT:MEAS2:TYPE FREQUENCY")
+def scope_degauss():
+    scope.write("MEASUREMENT:MEAS1:STATE ON")
+    scope.write('MEASUREMENT:MEAS1:SOURCE1')
+    scope.write("MEASUREMENT:MEAS1:TYPE FREQUENCY")
 
-scope.write("MEASUREMENT:MEAS3:STATE ON")
-scope.write('MEASUREMENT:MEAS3:SOURCE1')
-scope.write("MEASUREMENT:MEAS3:TYPE FREQUENCY")
+    scope.write("MEASUREMENT:MEAS2:STATE ON")
+    scope.write('MEASUREMENT:MEAS2:SOURCE1')
+    scope.write("MEASUREMENT:MEAS2:TYPE FREQUENCY")
 
-scope.write("MEASUREMENT:MEAS4:STATE ON")
-scope.write('MEASUREMENT:MEAS4:SOURCE1')
-scope.write("MEASUREMENT:MEAS4:TYPE FREQUENCY")
+    scope.write("MEASUREMENT:MEAS3:STATE ON")
+    scope.write('MEASUREMENT:MEAS3:SOURCE1')
+    scope.write("MEASUREMENT:MEAS3:TYPE FREQUENCY")
 
-scope.write('CH1:SCALE 5E0')
-scope.write('HORIZONTAL:SCALE 4E-03')
+    scope.write("MEASUREMENT:MEAS4:STATE ON")
+    scope.write('MEASUREMENT:MEAS4:SOURCE1')
+    scope.write("MEASUREMENT:MEAS4:TYPE FREQUENCY")
 
-scope.write("CH1:PRObe:DEGAUss EXECute")
+    scope.write('CH1:SCALE 5E0')
+    scope.write('HORIZONTAL:SCALE 4E-03')
+
+    scope.write("CH1:PRObe:DEGAUss EXECute")
 
 
 def getFFT():
@@ -60,6 +63,7 @@ def getFFT():
 def get_comp_freq():
     q_str = scope.query("MEASUREMENT:MEAS1:VALUE?")
     return q_str
+
 
 ser = serial.Serial(
     # Serial Port to read the data from
@@ -174,15 +178,17 @@ def refresh_scope():
 
 
 def get_comp_data():
-
     data = ser.readline()
     data = str(data, 'utf-8')
     if ("TIME" and "SN") not in data:
         space_split = data.split()
 
     return space_split
-#
-#
-# setQPX1200SP_1(28, 1)
-#
-# print(get_comp_data())
+
+
+def set_comp(string):
+    string = string.encode()
+    ser.write(string)
+
+
+

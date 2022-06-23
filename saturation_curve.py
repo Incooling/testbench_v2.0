@@ -185,7 +185,8 @@ def sat_temp(pressure):
         60]
     i = 0
     while True:
-        if pressure_lut[i] > pressure + 1:
+
+        if pressure_lut[i] > pressure + 1.01235:
 
             # store found index to variable
             value_above = i - 1
@@ -197,9 +198,11 @@ def sat_temp(pressure):
                            pressure - pressure_lut[value_below])
             break
 
-        elif pressure_lut[i] == pressure + 1:
+        elif pressure_lut[i] == pressure + 1.01235:
             temp = temp_lut[i]
             break
 
         i += 1
     return round(temp, 2)
+
+print(sat_temp(6.8))

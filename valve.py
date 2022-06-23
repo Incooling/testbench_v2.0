@@ -161,8 +161,8 @@ def getValvePos():
 # ttiPsu.setOutputEnable(3, True)
 #
 # print("before",getValvePos())
-# setValvePos(255)
-#
+# setValvePos(250)
+# #
 # print("after",getValvePos())
 #
 # setValvePos(0)

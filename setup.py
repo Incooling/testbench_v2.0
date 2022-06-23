@@ -87,7 +87,6 @@ t_flow_out = list()
 t_sat_evap_in = list()
 t_evap_out_mid = list()
 
-
 # Pressure array
 p_evap_out = list()
 p_cond_in = list()
@@ -156,7 +155,6 @@ comp_set_var = list()
 compressor_type = list()
 welco_data = list()
 
-
 # HVAC
 hvac_volt = list()
 hvac_cur = list()
@@ -165,6 +163,18 @@ hvac_set_var = list()
 hvac_volt_update = list()
 hvac_cur_update = list()
 hvac_set_update = list()
+
+# Welco compressor
+welco_time = list()
+welco_cst = list()
+welco_imc = list()
+welco_speed = list()
+welco_curr = list()
+welco_pin = list()
+welco_st = list()
+welco_stat = list()
+welco_error = list()
+welco_data = list()
 
 # Humidity
 humidity = list()
@@ -245,6 +255,15 @@ temp_load_2_colm = 49
 temp_load_3_colm = 50
 set_heat_load_colm = 51
 flowmeter_setting_colm = 52
+welco_time_colm = 53
+welco_cst_colm = 54
+welco_imc_colm = 55
+welco_speed_colm = 56
+welco_curr_colm = 57
+welco_pin_colm = 58
+welco_st_colm = 59
+welco_stat_colm = 60
+welco_error_colm = 61
 
 # Workbook is created
 wb1 = xw.Workbook()
@@ -310,7 +329,14 @@ sheet1.write(0, 49, 't_load_middle')
 sheet1.write(0, 50, 't_load_out')
 sheet1.write(0, 51, 'Set HVAC voltage')
 sheet1.write(0, 52, 'Setting flowmeter')
-
+sheet1.write(0, 53, 'Welco time')
+sheet1.write(0, 54, 'Welco shell temp')
+sheet1.write(0, 55, 'Welco rpm')
+sheet1.write(0, 56, 'Welco phase current')
+sheet1.write(0, 57, 'Welco input power')
+sheet1.write(0, 58, 'Welco program state')
+sheet1.write(0, 59, 'Welco motor control state')
+sheet1.write(0, 60, 'Welco error state')
 
 meas_unipolair_colm = 2
 fmeas_colm = 3

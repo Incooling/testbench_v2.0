@@ -183,6 +183,27 @@ def update_data():
                                "comp_min_freq": "None",
                                "comp_avg_freq": "None"}
 
+            welco_time.insert(0, compressor.get_comp_data()[0])
+            welco_cst.insert(0, compressor.get_comp_data()[1])
+            welco_imc.insert(0, compressor.get_comp_data()[2])
+            welco_speed.insert(0, compressor.get_comp_data()[3])
+            welco_curr.insert(0, compressor.get_comp_data()[4])
+            welco_pin.insert(0, compressor.get_comp_data()[5])
+            welco_st.insert(0, compressor.get_comp_data()[6])
+            welco_stat.insert(0, compressor.get_comp_data()[7])
+            welco_error.insert(0, compressor.get_comp_data()[8])
+
+
+            welco_data = {"time": welco_time[0],
+                          "cst": welco_cst[0],
+                          "imc": welco_imc[0],
+                          "speed": welco_speed[0],
+                          "curr": welco_curr[0],
+                          "pin": welco_pin[0],
+                          "st": welco_st[0],
+                          "stat:": welco_stat[0],
+                          "error": welco_error[0]}
+
             # compressor.refresh_scope()
 
             hvac_volt.insert(0, round(hvac.getHeatVolt(), 3))
